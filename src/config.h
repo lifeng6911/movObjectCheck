@@ -4,6 +4,11 @@
 #include <string>
 
 struct Config {
+    // 设备信息
+    int device_id = 1;
+    std::string device_name = "RaspberryPi-001";
+    std::string device_location = "Unknown";
+
     // 摄像头配置
     int camera_index = 0;
     int frame_width = 640;
@@ -20,6 +25,9 @@ struct Config {
     std::string server_ip = "127.0.0.1";
     int server_port = 8888;
     int connection_timeout = 5000;
+
+    // 心跳配置
+    int heartbeat_interval = 30;  // 心跳间隔（秒）
 
     // 传输配置
     int jpeg_quality = 80;

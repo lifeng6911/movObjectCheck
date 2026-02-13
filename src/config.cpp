@@ -28,7 +28,10 @@ bool Config::loadFromFile(const std::string& filename) {
             value.erase(value.find_last_not_of(" \t") + 1);
 
             // 解析配置项
-            if (key == "camera_index") camera_index = std::stoi(value);
+            if (key == "device_id") device_id = std::stoi(value);
+            else if (key == "device_name") device_name = value;
+            else if (key == "device_location") device_location = value;
+            else if (key == "camera_index") camera_index = std::stoi(value);
             else if (key == "frame_width") frame_width = std::stoi(value);
             else if (key == "frame_height") frame_height = std::stoi(value);
             else if (key == "fps") fps = std::stoi(value);
@@ -39,6 +42,7 @@ bool Config::loadFromFile(const std::string& filename) {
             else if (key == "server_ip") server_ip = value;
             else if (key == "server_port") server_port = std::stoi(value);
             else if (key == "connection_timeout") connection_timeout = std::stoi(value);
+            else if (key == "heartbeat_interval") heartbeat_interval = std::stoi(value);
             else if (key == "jpeg_quality") jpeg_quality = std::stoi(value);
             else if (key == "max_retry") max_retry = std::stoi(value);
         }
