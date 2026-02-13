@@ -10,6 +10,12 @@ import time
 import os
 import sys
 import signal
+import io
+
+# 设置Windows控制台编码
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 def print_header(text):
     print("\n" + "=" * 60)
@@ -17,13 +23,25 @@ def print_header(text):
     print("=" * 60 + "\n")
 
 def print_success(text):
-    print(f"✓ {text}")
+    # Windows兼容的符号
+    if sys.platform == 'win32':
+        print(f"[OK] {text}")
+    else:
+        print(f"✓ {text}")
 
 def print_error(text):
-    print(f"✗ {text}")
+    # Windows兼容的符号
+    if sys.platform == 'win32':
+        print(f"[ERROR] {text}")
+    else:
+        print(f"✗ {text}")
 
 def print_warning(text):
-    print(f"⚠ {text}")
+    # Windows兼容的符号
+    if sys.platform == 'win32':
+        print(f"[WARNING] {text}")
+    else:
+        print(f"⚠ {text}")
 
 def check_dependencies():
     """检查依赖"""
