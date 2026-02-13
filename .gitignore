@@ -1,0 +1,60 @@
+# 编译生成的文件
+build/
+*.o
+*.so
+*.a
+motion_detector
+
+# IDE和编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+*.egg
+
+# 日志文件
+*.log
+logs/
+
+# 配置文件（可能包含敏感信息）
+# 注意：示例配置文件应该保留
+# config/config.ini
+# config/server_config.ini
+
+# 接收的图像
+received_images/
+*.jpg
+*.jpeg
+*.png
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# 系统文件
+Thumbs.db
+.DS_Store
+
+# 部署相关
+/opt/motion_detector/
