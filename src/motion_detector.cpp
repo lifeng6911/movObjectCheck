@@ -13,6 +13,12 @@ MotionDetector::~MotionDetector() {
 }
 
 bool MotionDetector::initialize() {
+    // ========== 测试模式：跳过摄像头初始化 ==========
+    std::cout << "摄像头初始化成功（测试模式 - 无摄像头）" << std::endl;
+    return true;
+    // ================================================
+
+    /* 生产模式代码（已注释）
     cap_.open(config_.camera_index);
     if (!cap_.isOpened()) {
         std::cerr << "无法打开摄像头" << std::endl;
@@ -31,9 +37,17 @@ bool MotionDetector::initialize() {
 
     std::cout << "摄像头初始化成功" << std::endl;
     return true;
+    */
 }
 
 bool MotionDetector::detectMotion(cv::Mat& output_frame) {
+    // ========== 测试模式：模拟无运动检测 ==========
+    // 保持连接活跃，但不检测运动
+    sleep(1);  // 模拟处理延迟
+    return false;  // 始终返回无运动
+    // ================================================
+
+    /* 生产模式代码（已注释）
     cv::Mat frame, gray, blur_frame;
 
     cap_ >> frame;
@@ -108,6 +122,7 @@ bool MotionDetector::detectMotion(cv::Mat& output_frame) {
         output_frame = frame.clone();
         return false;
     }
+    */
 }
 
 bool MotionDetector::isLightingChange(const cv::Mat& frame_delta, double motion_area) {
